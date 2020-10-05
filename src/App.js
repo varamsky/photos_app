@@ -1,25 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ShowImage from './showImage.js';
 
 function App() {
+
+  const [title] = React.useState("Photo App");
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  // when app mounts
+  React.useEffect(() => {
+    console.log("App Mounted");
+  },[]);
+
+  // when app unmounts
+  React.useEffect(() => {
+    return() => {
+      console.log("App Unmounted");
+    }
+  },[]);
+  
+  function handleClick() {
+    setIsVisible(!isVisible);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.StrictMode>
+      <section style={{ textAlign: "center" }}>
+        <div style={{ fontSize: "30px" }}>
+          {title}
+        </div>
+        <div>
+          <button
+            className="toggleButton"
+            onClick={handleClick}
+          >
+            Toggle Image
+              </button>
+        </div>
+        {(isVisible) ? <ShowImage/> : null}
+      </section>
+    </React.StrictMode>
   );
 }
 
