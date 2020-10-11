@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import ShowImage from './showImage.js';
+import ImageGallery from './imageGallery.js';
 
 function App() {
 
@@ -37,7 +37,7 @@ function App() {
             Toggle Image
               </button>
         </div>
-        {(isVisible) ? <ShowImage/> : null}
+        {(isVisible) ? <ImageGallery/> : null}
       </section>
     </React.StrictMode>
   );
